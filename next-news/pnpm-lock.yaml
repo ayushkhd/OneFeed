@@ -8,9 +8,15 @@ dependencies:
   '@react-three/drei':
     specifier: ^9.102.6
     version: 9.102.6(@react-three/fiber@8.15.19)(@types/react@18.0.35)(@types/three@0.162.0)(react-dom@18.2.0)(react@18.2.0)(three@0.162.0)
+  '@sigma/node-image':
+    specifier: 3.0.0-beta.8
+    version: 3.0.0-beta.8(sigma@3.0.0-beta.14)
   firebase:
     specifier: ^9.17.2
     version: 9.17.2
+  graphology:
+    specifier: ^0.25.4
+    version: 0.25.4(graphology-types@0.24.7)
   ms:
     specifier: ^2.1.3
     version: 2.1.3
@@ -26,6 +32,12 @@ dependencies:
   react-dom:
     specifier: latest
     version: 18.2.0(react@18.2.0)
+  react-sigma:
+    specifier: ^1.2.35
+    version: 1.2.35(react-dom@18.2.0)(react@18.2.0)
+  react-sigma.min.css:
+    specifier: link:@react-sigma/core/lib/react-sigma.min.css
+    version: link:@react-sigma/core/lib/react-sigma.min.css
   react-tagcloud:
     specifier: ^2.3.3
     version: 2.3.3(react@18.2.0)
@@ -35,6 +47,9 @@ dependencies:
   react-wordcloud:
     specifier: ^1.2.7
     version: 1.2.7(react@18.2.0)
+  sigma:
+    specifier: 3.0.0-beta.14
+    version: 3.0.0-beta.14(graphology-types@0.24.7)
   three:
     specifier: ^0.162.0
     version: 0.162.0
@@ -925,6 +940,14 @@ packages:
   /@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
+
+  /@sigma/node-image@3.0.0-beta.8(sigma@3.0.0-beta.14):
+    resolution: {integrity: sha512-LOni5K5gS8CjFVrciF52dHLPKGxjE5xHZW3qtpBi8+XkrMwOXPRbI/rQfkUNrbPEO/tpwkpGFjZThIIcnMXx5g==}
+    peerDependencies:
+      sigma: '>=3.0.0-beta.10'
+    dependencies:
+      sigma: 3.0.0-beta.14(graphology-types@0.24.7)
+    dev: false
 
   /@swc/helpers@0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
@@ -1875,6 +1898,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /events@3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
+
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
@@ -2133,6 +2161,28 @@ packages:
   /grapheme-splitter@1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
+
+  /graphology-types@0.24.7:
+    resolution: {integrity: sha512-tdcqOOpwArNjEr0gNQKCXwaNCWnQJrog14nJNQPeemcLnXQUUGrsCWpWkVKt46zLjcS6/KGoayeJfHHyPDlvwA==}
+    dev: false
+
+  /graphology-utils@2.5.2(graphology-types@0.24.7):
+    resolution: {integrity: sha512-ckHg8MXrXJkOARk56ZaSCM1g1Wihe2d6iTmz1enGOz4W/l831MBCKSayeFQfowgF8wd+PQ4rlch/56Vs/VZLDQ==}
+    peerDependencies:
+      graphology-types: '>=0.23.0'
+    dependencies:
+      graphology-types: 0.24.7
+    dev: false
+
+  /graphology@0.25.4(graphology-types@0.24.7):
+    resolution: {integrity: sha512-33g0Ol9nkWdD6ulw687viS8YJQBxqG5LWII6FI6nul0pq6iM2t5EKquOTFDbyTblRB3O9I+7KX4xI8u5ffekAQ==}
+    peerDependencies:
+      graphology-types: '>=0.24.0'
+    dependencies:
+      events: 3.3.0
+      graphology-types: 0.24.7
+      obliterator: 2.0.4
+    dev: false
 
   /has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
@@ -2693,6 +2743,10 @@ packages:
       es-abstract: 1.21.2
     dev: true
 
+  /obliterator@2.0.4:
+    resolution: {integrity: sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==}
+    dev: false
+
   /once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -2884,6 +2938,17 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.21.0
+    dev: false
+
+  /react-sigma@1.2.35(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-amjKjaQusefDp8dD9er3wE/lfubSQT5fJSRF4SsS0LjxRue4bpSapAQ1WpmSM6nQEgawbrKel+bQBmatl7MAIw==}
+    engines: {node: '>=8.0'}
+    peerDependencies:
+      react: '>=15.3'
+      react-dom: '>=15.3'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-tagcloud@2.3.3(react@18.2.0):
@@ -3092,6 +3157,15 @@ packages:
       get-intrinsic: 1.2.0
       object-inspect: 1.12.3
     dev: true
+
+  /sigma@3.0.0-beta.14(graphology-types@0.24.7):
+    resolution: {integrity: sha512-saU2YWBRKPOPIkUgead3kT9dQ9Hg780iikdMnUQhXBNJ0TBXjjHlnqsLvsP+cwX9X4E+x/HVf3dDn3TnbZFjig==}
+    dependencies:
+      events: 3.3.0
+      graphology-utils: 2.5.2(graphology-types@0.24.7)
+    transitivePeerDependencies:
+      - graphology-types
+    dev: false
 
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}

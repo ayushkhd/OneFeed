@@ -4,6 +4,7 @@ export default function Nav() {
   return (
     <ul>
       <Item href="/sphere">sphere</Item>
+      <Item href="/graph">graph</Item>
       <Item href="/newest">new</Item>
       <Item href="/show">show</Item>
       <Item href="/ask">ask</Item>

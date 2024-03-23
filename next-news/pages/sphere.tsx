@@ -11,15 +11,24 @@ const data = [
     { value: 'CSS3', count: 20 },
 ]
 
+const customRenderer = (tag, size, color) => {
+    return (
+        <span key={tag.value} style={{ color }} className={`tag-${size}`}>
+            {tag.value}
+        </span>
+    )
+}
+
 export default function Sphere() {
     return (
         <Page>
-            <TagCloud
+            <TagCloud tags={data} minSize={1} maxSize={5} renderer={customRenderer} />
+            {/* <TagCloud
                 minSize={12}
                 maxSize={35}
                 tags={data}
                 onClick={tag => alert(`'${tag.value}' was selected!`)}
-            />
+            /> */}
         </Page>
     )
 }
