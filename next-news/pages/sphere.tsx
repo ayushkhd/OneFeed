@@ -1,31 +1,34 @@
 import Page from '../components/page'
-import Stories from '../components/stories'
-import getStories from '../lib/get-stories'
-import ReactWordcloud from 'react-wordcloud';
+import { TagCloud } from 'react-tagcloud'
 
-const words = [
-    {
-        text: 'told',
-        value: 64,
-    },
-    {
-        text: 'mistake',
-        value: 11,
-    },
-    {
-        text: 'thought',
-        value: 16,
-    },
-    {
-        text: 'bad',
-        value: 17,
-    },
+const data = [
+    { value: 'JavaScript', count: 38 },
+    { value: 'React', count: 30 },
+    { value: 'Nodejs', count: 28 },
+    { value: 'Express.js', count: 25 },
+    { value: 'HTML5', count: 33 },
+    { value: 'MongoDB', count: 18 },
+    { value: 'CSS3', count: 20 },
 ]
 
-export default function Show({ stories }) {
+const SimpleCloud = () => (
+    <TagCloud
+        minSize={12}
+        maxSize={35}
+        tags={data}
+        onClick={tag => alert(`'${tag.value}' was selected!`)}
+    />
+)
+
+export default function Sphere() {
     return (
         <Page>
-            <ReactWordcloud words={words} />
+            <TagCloud
+                minSize={12}
+                maxSize={35}
+                tags={data}
+                onClick={tag => alert(`'${tag.value}' was selected!`)}
+            />
         </Page>
     )
 }
