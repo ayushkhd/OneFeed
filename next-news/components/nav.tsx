@@ -3,6 +3,7 @@ import Link from 'next/link'
 export default function Nav() {
   return (
     <ul>
+      <Item href="/scratchpad">scratchpad</Item>
       <Item href="/sphere">sphere</Item>
       <Item href="/graph">graph</Item>
       <Item href="/newest">new</Item>
