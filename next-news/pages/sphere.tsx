@@ -11,15 +11,6 @@ const data = [
     { value: 'CSS3', count: 20 },
 ]
 
-const SimpleCloud = () => (
-    <TagCloud
-        minSize={12}
-        maxSize={35}
-        tags={data}
-        onClick={tag => alert(`'${tag.value}' was selected!`)}
-    />
-)
-
 export default function Sphere() {
     return (
         <Page>
