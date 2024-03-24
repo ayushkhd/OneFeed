@@ -6,12 +6,19 @@ const tweet = {
   fullname: "John Doe",
   username: "@johndoe",
   content: "Funding secured.",
-  timestamp: "2023-04-03T12:00:00Z",
+  timestamp: "6h",
 };
 
 export default function Twitter() {
   return (
     <Page>
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
+      <Tweet tweet={tweet} />
       <Tweet tweet={tweet} />
     </Page>
   )
