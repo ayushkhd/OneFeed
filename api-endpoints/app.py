@@ -8,7 +8,7 @@ def home():
     return "Welcome to the Flask API!"
 
 # Return JSON data
-@app.route('/api/data')
+@app.route('/api/test_data')
 def data():
     scraper = TwitterScraper()
     collected_tweets = scraper.collect_tweets()
