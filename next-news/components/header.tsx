@@ -17,11 +17,6 @@ export default function Header() {
           <Nav />
         </div>
       </div>
-      <div className="right">
-        <Link href="/login" legacyBehavior>
-          <a className="login">login</a>
-        </Link>
-      </div>
 
       <style jsx>{`
         header {
@@ -54,19 +49,6 @@ export default function Header() {
           vertical-align: top;
         }
 
-        a.login {
-          padding: 10px;
-          display: inline-block;
-          font-size: 11px;
-          text-transform: uppercase;
-          text-decoration: none;
-          color: #000;
-        }
-
-        .login:hover {
-          color: #fff;
-        }
-
         .nav {
           display: inline-block;
           vertical-align: top;
@@ -76,10 +58,6 @@ export default function Header() {
           .title {
             font-size: 16px;
             padding-bottom: 0;
-          }
-
-          a.login {
-            padding: 24px 10px 23px;
           }
 
           .nav {
