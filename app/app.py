@@ -34,8 +34,8 @@ Returns a list of top 5 categories
 '''
 @app.route('/api/refresh')
 def feedupdate():
-    tweets = scraper.collect_tweets()
-    _ = doc_processor.process_documents(tweets)
+    # tweets = scraper.collect_tweets()
+    # _ = doc_processor.process_documents(tweets)
     print("Index refreshed and documents processed.")
     # Return the list of categories
     # TODO: Does this work?
@@ -104,6 +104,6 @@ if __name__ == '__main__':
     # Initialize Document Processor
     doc_processor = DocumentProcessor(config, db_client)
     # Create index and embed documents
-    scraper = TwitterScraper()
+    # scraper = TwitterScraper()
  
     app.run(debug=True)
