@@ -35,15 +35,12 @@ Returns a list of top 5 categories
 '''
 @app.route('/')
 def feedupdate():
-    query = "most important tweets"
-    scraper = TwitterScraper()
-    tweets = scraper.collect_tweets()
-    refreshed_index = doc_processor.process_documents(tweets)
-    print("Index refreshed and documents processed.")
     # Retrieve
     retriever = NodeRetriever(refreshed_index, top_k=10)
     retr_doc = retriever.retrieve_nodes(query)
     print(retr_doc)
+    refreshed_index = doc_processor.process_documents()
+    print("Index refreshed and documents processed.")
     # Return the list of categories 
     return jsonify(retr_doc)
 
@@ -80,3 +77,5 @@ if __name__ == '__main__':
     # Create index and embed documents
  
     app.run(debug=True)
+
+
