@@ -10,14 +10,14 @@ class DocumentProcessor:
     def __init__(self, config, mongodb_client):
         Settings.embed_model = MistralAIEmbedding(model_name='mistral-embed', api_key=config.MISTRAL_API_KEY)
 
-        vector_store = MongoDBAtlasVectorSearch(
+        self.vector_store = MongoDBAtlasVectorSearch(
             mongodb_client=mongodb_client,
             db_name=config.DB_NAME,
             collection_name=config.COLLECTION_NAME,
             index_name=config.INDEX_NAME,
             embedding_key=config.EMBEDDING_ATTRIBUTE,
         )
-        self.storage_context = StorageContext.from_defaults(vector_store=vector_store)
+        self.storage_context = StorageContext.from_defaults(vector_store=self.vector_store)
 
         # Text Splitter
         chunks = 256
@@ -34,21 +34,24 @@ class DocumentProcessor:
 
         self.docs_dir = config.DATA_DIR
 
-    def process_documents(self, docs):
+    def process_documents(self, docs, create=True):
         # TODO: pass documents as dictionary instead of reading local dir
-        documents = []
-        for doc in docs:
-            document = Document(
-                text=doc['content'],
-                metadata={
-                    "user": doc['user'], 
-                    "id": doc['id'],
-                    "avatar_url": doc['avatar_url'],
-                    "timestamp": doc['timestamp']
-                    },
-            )
-            documents.append(document)
-        # docs = SimpleDirectoryReader(input_dir=self.docs_dir).load_data()
-        index = VectorStoreIndex.from_documents(documents, self.storage_context, transformations=[Settings.text_splitter])
-        refreshed_index = index.refresh_ref_docs(documents)
+        if create:
+            documents = []
+            for doc in docs:
+                document = Document(
+                    text=doc['content'],
+                    metadata={
+                        "user": doc['user'], 
+                        "id": doc['id'],
+                        "avatar_url": doc['avatar_url'],
+                        "timestamp": doc['timestamp']
+                        },
+                )
+                documents.append(document)
+            # docs = SimpleDirectoryReader(input_dir=self.docs_dir).load_data()
+            index = VectorStoreIndex.from_documents(documents, self.storage_context, transformations=[Settings.text_splitter])
+            _ = index.refresh_ref_docs(documents)
+        else:
+            index = VectorStoreIndex.from_vector_store(vector_store=self.vector_store, storage_context=self.storage_context)
         return index

@@ -6,5 +6,6 @@ llama-index-llms-mistralai
 transformers==4.38.2
 instructor
 openai
-dotenv
+python-dotenv
 twikit
+flask
