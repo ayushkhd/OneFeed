@@ -1,11 +1,19 @@
+import os
 from flask import Flask, jsonify, request
 from xScrape import TwitterScraper
 from config import Config
 from database import DatabaseClient
 from document_processor import DocumentProcessor
 from retriever import NodeRetriever
+from ScriptGen import ScriptGenerator
+from dotenv import load_dotenv
+from elevenlabs import Voice, VoiceSettings, play
+from elevenlabs.client import ElevenLabs
+from llama_index.llms.mistralai import MistralAI
 
+load_dotenv()  # take environment variables from .env.
 
+global payload
 app = Flask(__name__)
 
 
@@ -73,15 +81,34 @@ def retrieve_top_k():
         ranked_payload[idx] = value
     return jsonify(payload)
 
+@app.route('/api/scriptgen')
+def scriptgen():
+    content = ''
+    for key in payload.keys():
+        text = data[key]["content"]
+        content = str(content) + '\n\n'
+    
+    script = script_gen.complete(content)
 
 '''
-Voice Gen - 
+Voice Gen:
 It takes in all the tweets that are relevant + calls Mistral to generate a script + calls 11Labs to generate audio.
 Returns an audio link to play in the website 
 '''
 @app.route('/audio')
 def audio_recording():
     # call 11labs with feedupdate data 
+    data = retrieve_top_k()
+
+    # audio = client.generate(
+    # text="Hello! My name is Bella.",
+    # voice=Voice(
+    #     voice_id='EXAVITQu4vr4xnSDxMaL',
+    #     settings=VoiceSettings(stability=0.71, similarity_boost=0.5, style=0.0, use_speaker_boost=True)
+    #     )
+    # )
+
+
     return jsonify("link_to_audio")
 
 '''
