@@ -34,8 +34,21 @@ class DocumentProcessor:
 
         self.docs_dir = config.DATA_DIR
 
-    def process_documents(self):
-        docs = SimpleDirectoryReader(input_dir=self.docs_dir).load_data()
-        index = VectorStoreIndex.from_documents(docs, self.storage_context, transformations=[Settings.text_splitter])
-        refreshed_index = index.refresh_ref_docs(docs)
+    def process_documents(self, docs):
+        # TODO: pass documents as dictionary instead of reading local dir
+        documents = []
+        for doc in docs:
+            document = Document(
+                text=doc['content'],
+                metadata={
+                    "user": doc['user'], 
+                    "id": doc['id'],
+                    "avatar_url": doc['avatar_url'],
+                    "timestamp": doc['timestamp']
+                    },
+            )
+            documents.append(document)
+        # docs = SimpleDirectoryReader(input_dir=self.docs_dir).load_data()
+        index = VectorStoreIndex.from_documents(documents, self.storage_context, transformations=[Settings.text_splitter])
+        refreshed_index = index.refresh_ref_docs(documents)
         return index

@@ -51,11 +51,11 @@ class TwitterScraper:
         return all_tweets
 
 # Usage
-scraper = TwitterScraper()
-collected_tweets = scraper.collect_tweets()
-for tweet in collected_tweets:
-    print('------')
-    print(f"User: {tweet['user']}")
-    print(f"Content: {tweet['content']}")
-    print(f"Id: {tweet['id']}")
-    print('------')
+# scraper = TwitterScraper()
+# collected_tweets = scraper.collect_tweets()
+# for tweet in collected_tweets:
+#     print('------')
+#     print(f"User: {tweet['user']}")
+#     print(f"Content: {tweet['content']}")
+#     print(f"Id: {tweet['id']}")
+#     print('------')
