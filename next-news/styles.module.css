@@ -1,0 +1,27 @@
+.tweet {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.tweetHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.tweetUsername {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tweetTimestamp {
+    color: #666;
+    font-size: smaller;
+}
+
+.tweetContent {
+    white-space: pre-wrap;
+    /* Preserve line breaks */
+}
