@@ -48,6 +48,12 @@ class DocumentProcessor:
                         "timestamp": doc['timestamp']
                         },
                 )
+                document.excluded_llm_metadata_keys = [
+                    "user",
+                    "id",
+                    "avatar_url",
+                    "timestamp"
+                    ]
                 documents.append(document)
             # docs = SimpleDirectoryReader(input_dir=self.docs_dir).load_data()
             index = VectorStoreIndex.from_documents(documents, self.storage_context, transformations=[Settings.text_splitter])
