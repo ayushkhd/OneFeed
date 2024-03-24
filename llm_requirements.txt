@@ -1,0 +1,6 @@
+pymongo==4.6.2
+llama-index
+llama-index-embeddings-mistralai
+llama-index-vector-stores-mongodb
+llama-index-llms-mistralai
+transformers==4.38.2
