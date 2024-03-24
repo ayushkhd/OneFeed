@@ -26,7 +26,7 @@ export default function Header() {
 
       <style jsx>{`
         header {
-          background: #ffa52a;
+          background: #8fc7ff;
           display: flex;
           font-size: 14px;
         }

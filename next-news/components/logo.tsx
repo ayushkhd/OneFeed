@@ -1,7 +1,7 @@
 export default function Logo() {
   return (
     <span>
-      N
+      OFeed
       <style jsx>{`
         span {
           border: 1px solid #fff;
