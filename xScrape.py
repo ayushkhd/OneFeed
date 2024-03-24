@@ -12,7 +12,7 @@ class TwitterScraper:
         self.password = os.getenv('PASSWORD')
         self.client = Client(language)
         self.cookies_file = 'cookies.json'
-        self.num_get_requests = 5
+        self.num_get_requests = 1
         self.load_cookies()
 
     def save_cookies(self):
