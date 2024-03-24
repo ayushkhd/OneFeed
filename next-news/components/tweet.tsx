@@ -3,7 +3,7 @@ import styles from "../styles.module.css";
 import Image from 'next/image';
 
 const Tweet = ({ tweet }) => {
-    const { username, content, timestamp } = tweet;
+    const { fullname, username, content, timestamp } = tweet;
 
     return (
         <div className={styles.tweet}>
@@ -16,7 +16,10 @@ const Tweet = ({ tweet }) => {
             />
             <div className={styles.tweetBody}>
                 <div className={styles.tweetHeader}>
-                    <strong>{username}</strong>
+                    {fullname}
+                    <div className={styles.tweetUsername}>
+                        <strong>{username}</strong>
+                    </div>
                     <span className={styles.tweetTimestamp}>&nbsp; &#8226; {timestamp}</span>
                 </div>
                 <div className={styles.tweetContent}>{content}</div>
