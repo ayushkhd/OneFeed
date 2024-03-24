@@ -43,28 +43,29 @@ export default function Twitter({ data }) {
         <source src="/elevenlabs.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <iframe width="100" height="200"
+      <div className="youtube">
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/W9rzhC_9fok"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
 gyroscope; picture-in-picture;
 web-share"
         allowfullscreen></iframe>
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/ekpqh0YCylg"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
   gyroscope; picture-in-picture;
   web-share"
         allowfullscreen></iframe>
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/34YIp_yydQc"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
     gyroscope; picture-in-picture;
     web-share"
         allowfullscreen></iframe>
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/JdwF-poYdOQ"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -72,7 +73,7 @@ web-share"
       web-share"
         allowfullscreen></iframe>
 
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/hV8dNhvHu0I"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -80,15 +81,16 @@ web-share"
       web-share"
         allowfullscreen></iframe>
 
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/CaTC22eZ2EE"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
         gyroscope; picture-in-picture;
         web-share"
         allowfullscreen></iframe>
+      </div>
 
-      {/* <iframe width="100" height="200"
+      {/* <iframe width="200" height="400"
         src="https://www.youtube.com/embed/IQnUfYQ4z0Y"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -96,7 +98,7 @@ web-share"
           web-share"
         allowfullscreen></iframe>
 
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/qutE08XLgkY"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -104,7 +106,7 @@ web-share"
             web-share"
         allowfullscreen></iframe>
 
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/0kIhwa1e_5M"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -112,7 +114,7 @@ web-share"
               web-share"
         allowfullscreen></iframe>
 
-      <iframe width="100" height="200"
+      <iframe width="200" height="400"
         src="https://www.youtube.com/embed/8g58yrV6B3g"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
@@ -157,12 +159,18 @@ web-share"
       }
 
       <style jsx>{`
+      .youtube {
+        display:flex;
+        align-items:center;
+        justify-content: center;
+      }
                 audio {
                   width: 100%;
                 }
                 iframe {
+                  margin-top; 15px;
                   margin-right: 5px;
-                  margin-bottom: 5px;
+                  margin-bottom: 15px;
                 }
                 .tweet {
                     display: flex;

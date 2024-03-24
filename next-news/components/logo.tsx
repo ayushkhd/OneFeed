@@ -8,7 +8,7 @@ export default function Logo() {
           display: inline-block;
           color: black;
           font-weight: bold;
-          font-size: 11px;
+          font-size: 16px;
           padding: 5px 8px;
         }
       `}</style>

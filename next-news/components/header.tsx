@@ -23,15 +23,19 @@ export default function Header() {
           background: #8fc7ff;
           display: flex;
           font-size: 14px;
+          justify-content: center;
+          align-items: center;
         }
 
         .logo {
-          margin: 4px 5px 2px 4px;
+          margin: 10px 10px 10px 10px;
           display: inline-block;
         }
 
         .left {
           flex: 9;
+          justify-content: center;
+          align-items: center;
         }
 
         .right {

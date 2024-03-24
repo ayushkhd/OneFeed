@@ -4,6 +4,7 @@ export default function Nav() {
   return (
     <ul>
       <Item href="/twitter">twitter</Item>
+      <Item href="/twitter">youtube</Item>
       {/* <Item href="/sphere">sphere</Item>
       <Item href="/graph">graph</Item>
       <Item href="/newest">new</Item>
@@ -14,6 +15,9 @@ export default function Nav() {
       <style jsx>{`
         ul {
           list-style-type: none;
+          height: 50px;
+          display: flex;
+          align-items: center;
         }
       `}</style>
     </ul>
