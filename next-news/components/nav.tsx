@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Nav() {
   return (
     <ul>
-      <Item href="/scratchpad">scratchpad</Item>
+      <Item href="/twitter">twitter</Item>
       <Item href="/sphere">sphere</Item>
       <Item href="/graph">graph</Item>
       <Item href="/newest">new</Item>
@@ -36,7 +36,6 @@ const Item = ({ href, children }) => (
         display: inline-block;
         padding: 10px;
         font-size: 11px;
-        text-transform: uppercase;
         text-decoration: none;
         color: #000;
       }
