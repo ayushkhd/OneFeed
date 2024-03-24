@@ -2,67 +2,56 @@ from twikit.client import Client
 import time
 import random
 import os
-from dotenv import load_dotenv  # Import the load_dotenv function
+from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+class TwitterScraper:
+    def __init__(self, language='en-US'):
+        # Load environment variables
+        load_dotenv()
+        self.username = os.getenv('USERNAME')
+        self.password = os.getenv('PASSWORD')
+        self.client = Client(language)
+        self.cookies_file = 'cookies.json'
+        self.num_get_requests = 5
+        self.load_cookies()
 
-USERNAME = os.getenv('USERNAME')  # Load USERNAME from .env
-PASSWORD = os.getenv('PASSWORD')  # Load PASSWORD from .env
+    def save_cookies(self):
+        self.client.save_cookies(self.cookies_file)
 
-COOKIES_FILE = 'cookies.json'
-NUM_GET_REQUESTS = 1
+    def load_cookies(self):
+        if os.path.exists(self.cookies_file):
+            self.client.load_cookies(self.cookies_file)
+        else:
+            self.login_and_save_cookies()
 
-# Initialize the client
-client = Client('en-US')
+    def login_and_save_cookies(self):
+        try:
+            _ = self.client.user_id()
+        except Exception as e:
+            print('Cookies expired, invalid, or not found. Attempting to log in.')
+            self.client.login(auth_info_1=self.username, password=self.password)
+            self.save_cookies()
 
-def save_cookies():
-    client.save_cookies(COOKIES_FILE)
-
-def load_cookies():
-    if os.path.exists(COOKIES_FILE):
-        client.load_cookies(COOKIES_FILE)
-
-# Attempt to use cached cookies
-load_cookies()
-
-# Try to perform an action that requires authentication
-try:
-    # This is a placeholder for a simple authenticated action, replace it with an actual call
-    # For example, trying to fetch a small piece of data that requires login
-    _ = client.user_id()
-    # If the above line does not raise an exception, assume we're logged in
-except Exception as e:
-    print('cookies expired, invalid or not found. Attempting to log in')
-    # If an exception is caught, assume it's because we're not logged in
-    # Log in and save cookies
-    client = Client('en-US')
-    client.login(auth_info_1=USERNAME, password=PASSWORD)
-    save_cookies()
-
-# Function to collect tweets
-def collect_tweets():
-    all_tweets = []  # List to store all tweets
-    for _ in range(NUM_GET_REQUESTS):  # Loop to run get_timeline() 5 times
-        tweets = client.get_timeline()
-        for tweet in tweets:
-            # Assuming tweet object has 'username', 'text', and 'url' attributes
-            tweet_info = {
-                'user': tweet.user['legacy']['screen_name'],
-                'content': tweet.text,
-                'id': tweet.id
-            }
-            all_tweets.append(tweet_info)
+    def collect_tweets(self):
+        all_tweets = []
+        for _ in range(self.num_get_requests):
+            tweets = self.client.get_timeline()
+            for tweet in tweets:
+                tweet_info = {
+                    'user': tweet.user['legacy']['screen_name'],
+                    'content': tweet.text,
+                    'id': tweet.id,
+                    'avatar_url': tweet.user['legacy']['profile_image_url_https']
+                }
+                all_tweets.append(tweet_info)
+            
+            time.sleep(random.randint(3, 8))
         
-        # Sleep for a random time between 3 and 8 seconds to avoid being banned
-        time.sleep(random.randint(3, 8))
-    
-    return all_tweets
+        return all_tweets
 
-# Collect tweets
-collected_tweets = collect_tweets()
-
-# Print collected tweets
+# Usage
+scraper = TwitterScraper()
+collected_tweets = scraper.collect_tweets()
 for tweet in collected_tweets:
     print('------')
     print(f"User: {tweet['user']}")
