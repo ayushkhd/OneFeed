@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <div className="left">
-        <Link href="/" legacyBehavior>
+        <Link href="/twitter" legacyBehavior>
           <a>
             <span className="logo">
               <Logo />

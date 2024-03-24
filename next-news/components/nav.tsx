@@ -38,7 +38,7 @@ const Item = ({ href, children }) => (
       a {
         display: inline-block;
         padding: 10px;
-        font-size: 11px;
+        font-size: 14px;
         text-decoration: none;
         color: #000;
       }
