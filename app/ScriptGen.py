@@ -1,22 +1,11 @@
-class NodeRetriever:
-    def __init__(self, index, top_k=10):
+class ScriptGenerator:
+    def __init__(self, llm):
         """
-        Initializes the NodeRetriever with a specific top_k value for similarity retrieval.
-
-        Args:
-        top_k (int): The number of top similar items to retrieve.
+        Initializes the LLM.
         """
-        self.retriever = index.as_retriever(similarity_top_k=top_k)
+        self.llm = llm
 
-    def retrieve_nodes(self, query):
-        """
-        Retrieves nodes based on the provided query.
-
-        Args:
-        query (str): The query string to retrieve similar nodes for.
-
-        Returns:
-        list: A list of retrieved nodes.
-        """
-        retrieved_nodes = self.retriever.retrieve(query)
-        return retrieved_nodes
+    def complete(self, tweets):
+        prompt = "Below are tweets from my Twitter account. Can you help me generate a spoken broadcast script in David Attenborough's style? Please only output the script, nothing else, and start the script with 'In the arena of SF'\n\n"
+        resp = self.llm.complete(prompt + tweets)
+        return resp

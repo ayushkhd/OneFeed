@@ -9,10 +9,11 @@ from ScriptGen import ScriptGenerator
 from dotenv import load_dotenv
 from elevenlabs import Voice, VoiceSettings, play
 from elevenlabs.client import ElevenLabs
+from llama_index.llms.mistralai import MistralAI
 
 load_dotenv()  # take environment variables from .env.
 
-
+global payload
 app = Flask(__name__)
 
 
@@ -41,8 +42,8 @@ Returns a list of top 5 categories
 '''
 @app.route('/api/refresh')
 def feedupdate():
-    tweets = scraper.collect_tweets()
-    _ = doc_processor.process_documents(tweets)
+    #tweets = scraper.collect_tweets()
+    #_ = doc_processor.process_documents(tweets)
     print("Index refreshed and documents processed.")
     # Return the list of categories
     # TODO: Does this work?
@@ -80,6 +81,14 @@ def retrieve_top_k():
         ranked_payload[idx] = value
     return jsonify(payload)
 
+@app.route('/api/scriptgen')
+def scriptgen():
+    content = ''
+    for key in payload.keys():
+        text = data[key]["content"]
+        content = str(content) + '\n\n'
+    
+    script = script_gen.complete(content)
 
 '''
 Voice Gen:
@@ -122,7 +131,10 @@ if __name__ == '__main__':
     # Initialize Document Processor
     doc_processor = DocumentProcessor(config, db_client)
     # Create index and embed documents
-    scraper = TwitterScraper()
+    #scraper = TwitterScraper()
+    # Initialize LLM for generating script
+    llm = MistralAI(model="mistral-small-latest", temperature=0.1, api_key=config.MISTRAL_API_KEY)
+    script_gen = ScriptGenerator(llm)
 
     client = ElevenLabs(
     api_key=os.environ['ELEVEN_LABS_API_KEY']
