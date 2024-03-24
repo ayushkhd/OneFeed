@@ -4,3 +4,7 @@ llama-index-embeddings-mistralai
 llama-index-vector-stores-mongodb
 llama-index-llms-mistralai
 transformers==4.38.2
+instructor
+openai
+dotenv
+twikit

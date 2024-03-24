@@ -35,12 +35,15 @@ Returns a list of top 5 categories
 '''
 @app.route('/')
 def feedupdate():
+    query = "most important tweets"
+    scraper = TwitterScraper()
+    tweets = scraper.collect_tweets()
+    refreshed_index = doc_processor.process_documents(tweets)
+    print("Index refreshed and documents processed.")
     # Retrieve
     retriever = NodeRetriever(refreshed_index, top_k=10)
     retr_doc = retriever.retrieve_nodes(query)
     print(retr_doc)
-    refreshed_index = doc_processor.process_documents()
-    print("Index refreshed and documents processed.")
     # Return the list of categories 
     return jsonify(retr_doc)
 
@@ -60,7 +63,7 @@ Categorizing:
 Feed Update for a category [“AI”, “Health”] 
 Returns a structured JSON for UI 
 '''
-@app.route('/api/category'):
+@app.route('/api/category')
 def category_update():
     # call feedupdate with category
     return jsonify("data_to_return")
@@ -77,5 +80,3 @@ if __name__ == '__main__':
     # Create index and embed documents
  
     app.run(debug=True)
-
-
