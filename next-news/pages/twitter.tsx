@@ -1,6 +1,7 @@
 import React from "react";
 import Page from '../components/page'
 import Tweet from "../components/tweet"
+import getTweets from '../lib/get-tweets'
 
 const tweet = {
   fullname: "John Doe",
@@ -10,6 +11,7 @@ const tweet = {
 };
 
 export default function Twitter() {
+  // let tweets = getTweets();
   return (
     <Page>
       <Tweet tweet={tweet} />
