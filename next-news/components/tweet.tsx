@@ -8,7 +8,7 @@ const Tweet = ({ tweet }) => {
         <div>
             <div className="tweet">
                 <Image
-                    className={styles.avatar}
+                    className="avatar"
                     src="/elon.jpeg"
                     width={50}
                     height={50}
