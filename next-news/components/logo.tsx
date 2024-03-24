@@ -1,12 +1,12 @@
 export default function Logo() {
   return (
     <span>
-      OFeed
+      OneFeed
       <style jsx>{`
         span {
-          border: 1px solid #fff;
+          border: 1px solid black;
           display: inline-block;
-          color: #fff;
+          color: black;
           font-weight: bold;
           font-size: 11px;
           padding: 5px 8px;

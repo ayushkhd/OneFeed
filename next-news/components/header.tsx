@@ -11,7 +11,6 @@ export default function Header() {
             <span className="logo">
               <Logo />
             </span>
-            <span className="title">OneFeed</span>
           </a>
         </Link>
         <div className="nav">
