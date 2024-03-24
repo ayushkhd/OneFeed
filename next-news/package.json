@@ -22,6 +22,7 @@
     "nprogress": "^0.2.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-sigma": "^1.2.35",
     "react-tagcloud": "^2.3.3",
     "react-three-fiber": "^6.0.13",
     "react-wordcloud": "^1.2.7",

@@ -8,6 +8,7 @@ const Tweet = ({ tweet }) => {
     return (
         <div className={styles.tweet}>
             <Image
+                className={styles.avatar}
                 src="/elon.jpeg"
                 width={50}
                 height={50}
@@ -16,7 +17,7 @@ const Tweet = ({ tweet }) => {
             <div className={styles.tweetBody}>
                 <div className={styles.tweetHeader}>
                     <strong>{username}</strong>
-                    <span className={styles.tweetTimestamp}> - {timestamp}</span>
+                    <span className={styles.tweetTimestamp}>&nbsp; &#8226; {timestamp}</span>
                 </div>
                 <div className={styles.tweetContent}>{content}</div>
             </div>

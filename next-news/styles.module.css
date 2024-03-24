@@ -7,6 +7,11 @@
     border-radius: 5px;
 }
 
+.avatar {
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
 .tweetHeader {
     display: flex;
     align-items: center;

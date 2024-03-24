@@ -41,6 +41,9 @@ dependencies:
   react-dom:
     specifier: latest
     version: 18.2.0(react@18.2.0)
+  react-sigma:
+    specifier: ^1.2.35
+    version: 1.2.35(react-dom@18.2.0)(react@18.2.0)
   react-tagcloud:
     specifier: ^2.3.3
     version: 2.3.3(react@18.2.0)
@@ -5902,6 +5905,17 @@ packages:
       tslib: 2.5.0
       use-callback-ref: 1.3.2(@types/react@18.0.35)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.0.35)(react@18.2.0)
+    dev: false
+
+  /react-sigma@1.2.35(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-amjKjaQusefDp8dD9er3wE/lfubSQT5fJSRF4SsS0LjxRue4bpSapAQ1WpmSM6nQEgawbrKel+bQBmatl7MAIw==}
+    engines: {node: '>=8.0'}
+    peerDependencies:
+      react: '>=15.3'
+      react-dom: '>=15.3'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.0.35)(react@18.2.0):
