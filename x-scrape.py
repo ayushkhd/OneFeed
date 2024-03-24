@@ -41,7 +41,8 @@ class TwitterScraper:
                     'user': tweet.user['legacy']['screen_name'],
                     'content': tweet.text,
                     'id': tweet.id,
-                    'avatar_url': tweet.user['legacy']['profile_image_url_https']
+                    'avatar_url': tweet.user['legacy']['profile_image_url_https'],
+                    'timestamp': tweet.text['legacy']['created_at']
                 }
                 all_tweets.append(tweet_info)
             
