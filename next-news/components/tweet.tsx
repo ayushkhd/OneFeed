@@ -35,7 +35,7 @@ const Tweet = ({ tweet }) => {
                     border-radius: 5px;
                 }
 
-                .avatar {
+                img {
                     border-radius: 50%;
                     margin-right: 5px;
                 }
